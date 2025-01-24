@@ -166,6 +166,7 @@ main::-webkit-scrollbar {
 .link-item a {
   display: flex;
   align-items: center;
+  gap: 3px;
 }
 
 .link-item:hover {
