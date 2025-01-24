@@ -48,4 +48,3 @@ extension/
 - HTML/CSS/JavaScript
 - Chrome Extension API
 - Font Awesome Icons
-```
