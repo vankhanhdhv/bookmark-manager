@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Bookmark Manager Pro</title>
+ <link rel="stylesheet" href="styles.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+ <div class="app-container">
+   <header>
+     <h1>Bookmark Manager</h1>
+     <div class="header-buttons">
+      <button id="importBtn" class="btn-secondary">
+        <i class="fas fa-file-import"></i> Import
+      </button>
+      <button id="exportBtn" class="btn-secondary">
+        <i class="fas fa-file-export"></i> Export
+      </button>
+      <button id="addButton" class="btn-add">
+        <i class="fas fa-plus"></i> Bổ sung
+      </button>
+    </div>
+   </header>
+
+   <main id="mainContent">
+     <div id="bookmarksView" class="view active">
+       <div id="categoriesContainer"></div>
+     </div>
+
+     <div id="formsView" class="view">
+       <div class="forms-container">
+         <div class="form-section">
+           <h2>Thêm Danh Mục</h2>
+           <form id="categoryForm">
+             <input type="text" id="categoryName" placeholder="Tên danh mục" required>
+             <input type="url" id="categoryIcon" placeholder="URL ảnh danh mục" required>
+             <button type="submit">Thêm danh mục</button>
+           </form>
+         </div>
+
+         <div class="form-section">
+           <h2>Thêm Liên Kết</h2>
+           <form id="linkForm">
+             <select id="categorySelect" required>
+               <option value="">Chọn danh mục</option>
+             </select>
+             <input type="text" id="linkName" placeholder="Tên liên kết" required>
+             <input type="url" id="linkUrl" placeholder="URL liên kết" required>
+             <input type="url" id="linkIcon" placeholder="URL ảnh đại diện" required>
+             <button type="submit">Thêm liên kết</button>
+           </form>
+         </div>
+       </div>
+     </div>
+   </main>
+
+   <div id="editLinkModal" class="modal">
+     <div class="modal-content">
+       <h2>Chỉnh sửa liên kết</h2>
+       <form id="editLinkForm">
+         <input type="hidden" id="editLinkId">
+         <input type="text" id="editLinkName" placeholder="Tên liên kết" required>
+         <input type="url" id="editLinkUrl" placeholder="URL liên kết" required>
+         <input type="url" id="editLinkIcon" placeholder="URL ảnh đại diện" required>
+         <div class="modal-buttons">
+           <button type="submit">Lưu</button>
+           <button type="button" id="deleteLinkBtn" class="delete-btn">Xóa</button>
+           <button type="button" id="cancelEditLink">Hủy</button>
+         </div>
+       </form>
+     </div>
+   </div>
+
+   <div id="editCategoryModal" class="modal">
+     <div class="modal-content">
+       <h2>Chỉnh sửa danh mục</h2>
+       <form id="editCategoryForm">
+         <input type="hidden" id="editCategoryId">
+         <input type="text" id="editCategoryName" placeholder="Tên danh mục" required>
+         <input type="url" id="editCategoryIcon" placeholder="URL ảnh danh mục" required>
+         <div class="modal-buttons">
+           <button type="submit">Lưu</button>
+           <button type="button" id="deleteCategoryBtn" class="delete-btn">Xóa</button>
+           <button type="button" id="cancelEditCategory">Hủy</button>
+         </div>
+       </form>
+     </div>
+   </div>
+ </div>
+ <script src="popup.js"></script>
+</body>
+</html>
