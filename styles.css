@@ -163,6 +163,11 @@ main::-webkit-scrollbar {
   background: #fff
 }
 
+.link-item a {
+  display: flex;
+  align-items: center;
+}
+
 .link-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
@@ -172,14 +177,14 @@ main::-webkit-scrollbar {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  margin-bottom: 12px
 }
 
 .link-name {
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   color: var(--text-color);
-  word-break: break-word
+  word-break: break-word;
+  font-weight: 500;
 }
 
 .edit-button {
