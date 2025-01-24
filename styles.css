@@ -51,6 +51,22 @@ header {
   align-items: center
 }
 
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.3);
+}
+
 h1 {
   color: #fff;
   font-size: 1.5rem;
@@ -62,7 +78,7 @@ h1 {
   background: #fff;
   color: var(--primary-color);
   border: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
