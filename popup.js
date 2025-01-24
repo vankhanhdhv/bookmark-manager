@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const exportBtn = document.getElementById('exportBtn');
   const importBtn = document.getElementById('importBtn');
+  const searchInput = document.getElementById('searchInput');
  
   let currentView = 'bookmarks';
   let currentLinkId = null;
@@ -25,6 +26,38 @@ document.addEventListener('DOMContentLoaded', function() {
  
   loadBookmarks();
   updateCategorySelect();
+
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.trim().toLowerCase();
+    
+    chrome.storage.sync.get(['categories', 'bookmarks'], function(result) {
+      const categories = result.categories || [];
+      const bookmarks = result.bookmarks || [];
+      
+      categories.forEach(category => {
+        const categoryEl = document.querySelector(`[data-category-id="${category.id}"]`);
+        const categoryBookmarks = bookmarks.filter(b => b.categoryId === category.id);
+        
+        const visibleBookmarks = categoryBookmarks.filter(b => 
+          b.name.toLowerCase().includes(searchTerm) ||
+          b.url.toLowerCase().includes(searchTerm)
+        );
+  
+        if (categoryEl) {
+          const linksGrid = categoryEl.querySelector('.links-grid');
+          const links = categoryEl.querySelectorAll('.link-item');
+          
+          links.forEach(link => {
+            const linkText = link.querySelector('.link-name').textContent.toLowerCase();
+            const linkUrl = link.querySelector('a').href.toLowerCase();
+            link.style.display = (linkText.includes(searchTerm) || linkUrl.includes(searchTerm)) ? 'flex' : 'none';
+          });
+  
+          categoryEl.style.display = visibleBookmarks.length > 0 ? 'block' : 'none';
+        }
+      });
+    });
+  });
  
   addButton.addEventListener('click', () => {
     if (currentView === 'bookmarks') {
@@ -248,6 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const categoryCard = document.createElement('div');
         categoryCard.className = 'category-card';
+        categoryCard.setAttribute('data-category-id', category.id);
         
         const header = document.createElement('div');
         header.className = 'category-header';
