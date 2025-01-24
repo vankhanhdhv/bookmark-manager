@@ -57,6 +57,63 @@ header {
   align-items: center;
 }
 
+.header-dropdown {
+  position: relative;
+}
+
+.btn-menu {
+  background: #fff;
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.dropdown-content {
+  display: block;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  min-width: 160px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 101;
+ }
+
+ .dropdown-content button {
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  text-align: left;
+  border-radius: 0;
+ }
+
+.dropdown-content button:hover {
+  background: var(--bg-color);
+  color: #333;
+}
+
+.header-dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.header-dropdown:hover .dropdown-content button {
+  transform: translateX(0);
+  opacity: 1;
+ }
+
+.dropdown-content button:nth-child(1) { transition-delay: 0.1s; }
+.dropdown-content button:nth-child(2) { transition-delay: 0.15s; }
+.dropdown-content button:nth-child(3) { transition-delay: 0.2s; }
+
 .btn-secondary {
   background: rgba(255,255,255,0.2);
   color: white;
@@ -72,6 +129,24 @@ h1 {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0
+}
+
+.search-box {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.search-box input::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
 .btn-add {
@@ -166,6 +241,7 @@ main::-webkit-scrollbar {
 .link-item a {
   display: flex;
   align-items: center;
+  gap: 3px;
 }
 
 .link-item:hover {
@@ -218,11 +294,24 @@ main::-webkit-scrollbar {
   opacity: 1
 }
 
-.form-section {
-  margin: 0;
-  padding: 20px;
-  border-radius: 8px;
-  background: #f8f9fa
+form-section {
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.form-section input, 
+.form-section select {
+  background: var(--bg-color);
+  border: 2px solid transparent;
+  padding: 12px 16px;
+}
+
+.form-section input:focus,
+.form-section select:focus {
+  border-color: var(--primary-color);
+  background: white;
 }
 
 .form-section h2 {
@@ -265,7 +354,8 @@ button {
 }
 
 button:hover {
-  background: var(--hover-color)
+  background: var(--hover-color);
+  color: #fff;
 }
 
 .modal {
@@ -296,7 +386,8 @@ button:hover {
 .modal-buttons {
   display: flex;
   gap: 12px;
-  margin-top: 24px
+  margin-top: 24px;
+  justify-content: space-between;
 }
 
 .delete-btn {
